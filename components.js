@@ -20,9 +20,28 @@ export const myTable = (data)=> {
         const tdUpdate = document.createElement("td");
         tdUpdate.textContent = new Date(element.updateAt *1000);
 
-        tr.append(tdId, tdName, tdLastName, tdAge, tdEmail,tdRol, tdCreate, tdUpdate)
+        const tdActions = document.createElement("td");
+        const btnEdit = document.createElement("button");
+        btnEdit.textContent = "Edit"
+        const btnDelete = document.createElement("button");
+        btnDelete.textContent = "Delete"
+
+        tdActions.append(btnEdit, btnDelete)
+
+
+        tr.append(tdId, tdName, tdLastName, tdAge, tdEmail,tdRol, tdCreate, tdUpdate, tdActions)
         tdbody.append(tr)
     });
-    console.log(tdbody);
-    
+    return tdbody;    
 }
+
+export const myFormAdd = (e)=>{
+    const dialog = document.querySelector("#my__dialog")
+    dialog.showModal();
+    const my_form = document.createElement("form");
+    my_form.action="/informacion";
+    my_form.method="post";
+
+    console.log(my_form);
+    
+};
